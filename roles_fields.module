@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for roles_fields module.
+ */
+use Drupal\Core\Form\FormStateInterface;
+
+function roles_fields_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+ if ($form_id == 'user_register_form')
+  {
+
+    $form['field_subject']['#states'] = array(
+      'visible' => array(
+        ':input[name="roles[teacher]"]' =>['checked' => TRUE]
+      )
+    );
+    $form['field_class']['#states'] = array(
+      'visible' => array(
+        ':input[name="roles[student]"]' =>['checked' => TRUE]
+      )
+    );
+ }
+
+}
+
+
+/**
+ * @file
+ * Primary module hooks for roles_fields module.
+ */
